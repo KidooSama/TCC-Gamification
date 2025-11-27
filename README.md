@@ -1,5 +1,6 @@
 Produto final do meu artigo de TCC, um guia digital de boas praticas para gamificação para desenvolvedores e designers para aplicação eficiente e engajadora das gamificações em seus projetos.
 
+Link para acesso ao site: https://kidoosama.github.io/TCC-Gamification/
 Unico requisito é ter o Node.js & npm instalado - [instale com nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
 Siga os passos:
