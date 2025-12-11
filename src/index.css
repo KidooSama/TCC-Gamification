@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
     --background: 0 0% 98%;
@@ -38,7 +34,6 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
     
-    /* Custom colors for UX grid */
     --grid-header: 208 85% 25%;
     --grid-col-1: 260 60% 80%;
     --grid-col-2: 260 50% 70%;
@@ -100,7 +95,6 @@ All colors MUST be HSL.
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
     
-    /* Custom colors for UX grid */
     --grid-header: 208 85% 35%;
     --grid-col-1: 260 40% 35%;
     --grid-col-2: 260 35% 40%;
