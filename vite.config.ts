@@ -4,23 +4,12 @@ import path from "path";
 
 const base = process.env.VITE_BASE || "/TCC-Gamification/";
 
-// Plugin para processar index.html e corrigir caminhos de assets públicos
-const htmlPlugin = () => {
+// Plugin simples para substituir %BASE_URL% no HTML
+const baseUrlPlugin = () => {
   return {
-    name: "html-transform",
+    name: "base-url-replace",
     transformIndexHtml(html: string) {
-      // Substitui caminhos absolutos de assets públicos pelo base path
-      // Ex: /3175618.ico -> /TCC-Gamification/3175618.ico
-      return html.replace(
-        /(href|src)="\/([^/][^"]*)"/g,
-        (match, attr, filePath) => {
-          // Não substitui se for um link externo (http/https) ou já tiver o base path
-          if (filePath.startsWith("http") || filePath.startsWith("TCC-Gamification/")) {
-            return match;
-          }
-          return `${attr}="${base}${filePath}"`;
-        }
-      );
+      return html.replace(/%BASE_URL%/g, base);
     },
   };
 };
@@ -31,10 +20,14 @@ export default defineConfig({
     host: "::",
     port: 8080,
   },
-  plugins: [react(), htmlPlugin()],
+  plugins: [react(), baseUrlPlugin()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  build: {
+    outDir: "dist",
+    assetsDir: "assets",
   },
 });

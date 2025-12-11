@@ -29,9 +29,12 @@ try {
         cleanPath = cleanPath.substring(0, cleanPath.lastIndexOf('/') + 1);
       }
       
-      // Redireciona para index.html no mesmo diretório
-      const base = cleanPath || '/';
-      window.location.replace(base + 'index.html' + search + hash);
+      // Redireciona para index.html considerando o base path do GitHub Pages
+      const basePath = '/TCC-Gamification/';
+      const base = cleanPath || basePath;
+      // Garante que o base path está incluído
+      const targetPath = base.startsWith(basePath) ? base : basePath + (base === '/' ? '' : base.replace(/^\//, ''));
+      window.location.replace(targetPath + 'index.html' + search + hash);
     </script>
   `;
   
