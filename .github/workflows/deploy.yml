@@ -21,38 +21,28 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Build
         run: npm run build
         env:
           VITE_BASE: /TCC-Gamification/
-      
-      - name: Create 404.html
-        run: cp dist/index.html dist/404.html
-      
-      - name: Verify build
-        run: |
-          echo "Verificando arquivos gerados..."
-          ls -la dist/
-          echo "Verificando base path no index.html..."
-          grep -o 'href="[^"]*"' dist/index.html | head -5
-      
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: './dist'
 
   deploy:
     environment:
@@ -64,4 +54,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
